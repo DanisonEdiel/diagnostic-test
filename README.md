@@ -60,7 +60,8 @@ src/
 
 ## 📸 Screenshots
 
-*(You can insert images or GIFs of your app interface here)*
+![image](https://github.com/user-attachments/assets/f3319e64-d900-4cfb-adee-babadeb5e3c2)
+
 
 
 ## 📬 Contact
