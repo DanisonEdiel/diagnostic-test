@@ -163,7 +163,7 @@ const isNextDisabled = computed<boolean>(() => {
           <v-card>
             <v-card-title>Search Pokemon 👀</v-card-title>
             <v-card-text>
-              <v-text-field v-model="searchQuery" label="Nombre del Pokémon" prepend-inner-icon="mdi-magnify"
+              <v-text-field v-model="searchQuery" label="Pokemon Name" prepend-inner-icon="mdi-magnify"
                  clearable @input="handleSearch"></v-text-field>
             </v-card-text>
           </v-card>
@@ -202,11 +202,11 @@ const isNextDisabled = computed<boolean>(() => {
 
             <v-card-actions>
               <v-btn color="primary" variant="flat" :disabled="isPreviousDisabled" @click="handleLoadPreviousPage">
-                Anterior
+                Previous
               </v-btn>
               <v-spacer></v-spacer>
               <v-btn color="primary" variant="flat" :disabled="isNextDisabled" @click="handleLoadNextPage">
-                Siguiente
+                Next
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -227,16 +227,16 @@ const isNextDisabled = computed<boolean>(() => {
                 </v-list-item>
 
                 <v-list-item>
-                  <v-list-item-title>Altura: {{ selectedPokemonDetails.height / 10 }} m</v-list-item-title>
+                  <v-list-item-title>Height: {{ selectedPokemonDetails.height / 10 }} m</v-list-item-title>
                 </v-list-item>
 
                 <v-list-item>
-                  <v-list-item-title>Peso: {{ selectedPokemonDetails.weight / 10 }} kg</v-list-item-title>
+                  <v-list-item-title>Weight: {{ selectedPokemonDetails.weight / 10 }} kg</v-list-item-title>
                 </v-list-item>
               </v-list>
 
               <div class="mt-2">
-                <strong>Tipos:</strong>
+                <strong>Types:</strong>
                 <div class="d-flex flex-wrap">
                   <v-chip v-for="(type, index) in selectedPokemonDetails.types" :key="index" class="ma-1" color="primary"
                     text-color="white" size="small">
@@ -246,7 +246,7 @@ const isNextDisabled = computed<boolean>(() => {
               </div>
 
               <div class="mt-2">
-                <strong>Habilidades:</strong>
+                <strong>Abilities:</strong>
                 <div class="d-flex flex-wrap">
                   <v-chip v-for="(ability, index) in selectedPokemonDetails.abilities" :key="index" class="ma-1"
                     color="secondary" text-color="white" size="small">
@@ -258,7 +258,7 @@ const isNextDisabled = computed<boolean>(() => {
 
             <v-card-actions>
               <v-btn color="primary" variant="flat" @click="clearSelectedPokemon" block>
-                Volver a la lista
+                Back to list
               </v-btn>
             </v-card-actions>
           </v-card>

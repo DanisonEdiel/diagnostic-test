@@ -8,7 +8,7 @@ const MainRoutes = {
     children: [
       {
         name: 'Default',
-        path: '/vuetify-test',
+        path: '/pokemon-list',
         component: () => import('@/views/VuetifyTestView.vue')
       }
     ]
