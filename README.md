@@ -1,33 +1,72 @@
-# Diagnostic-test
 
-This template should help get you started developing with Vue 3 in Vite.
+# 🌟 Pokemon API Explorer
 
-## Recommended IDE Setup
+This project is built with [Vue 3](https://vuejs.org/) and [Vuetify](https://next.vuetifyjs.com/), designed to offer a modern, accessible, and fully responsive user interface.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📦 Main Technologies
 
-## Type Support for `.vue` Imports in TS
+- ⚙️ [Vue 3](https://vuejs.org/) (Composition API)
+- 🎨 [Vuetify 3](https://next.vuetifyjs.com/) (Material Design Framework)
+- 🛠️ Vite / Webpack
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 🚀 Installation
 
-## Customize configuration
+```bash
+# Clone the repository
+git clone https://github.com/DanisonEdiel/diagnostic-test.git
+cd diagnostic-test
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+# Install dependencies
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## 🧪 Available Scripts
 
-```sh
+```bash
+# Run the development server
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# Build for production
 npm run build
+
+# Preview the production build
+npm run preview
+
+# Lint the code (if configured)
+npm run lint
 ```
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/          # Static files like images or styles
+├── components/      # Reusable Vue components
+├── composables/     # Reusable logic using the Composition API
+├── layouts/         # App layouts (optional)
+├── pages/           # Main views or routes (if using Vue Router)
+├── plugins/         # Global configuration (Vuetify, Axios, etc.)
+├── router/          # Application routes
+├── store/           # Pinia or Vuex (if used)
+├── App.vue          # Root component
+└── main.ts          # Application entry point
+```
+
+## ✨ Features
+
+- ⚡ Fast and modular rendering with Vite
+- 📱 Fully responsive design
+- 📡 API consumption using Axios or Vue Query
+
+## 📸 Screenshots
+
+*(You can insert images or GIFs of your app interface here)*
+
+
+## 📬 Contact
+
+Made with ❤️ by [Edison Llano (DanisonEdiel)](https://github.com/DanisonEdiel).
+
+- 🌐 LinkedIn: [Edison Llano](https://www.linkedin.com/in/edison-daniel-llano-tapia-3859aa260/)
+- 📧 Email: edllanot@uce.edu.ec or edi282000@gmail.com
+- 🐙 GitHub: [DanisonEdiel](https://github.com/DanisonEdiel)
