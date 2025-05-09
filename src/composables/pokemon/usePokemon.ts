@@ -1,6 +1,6 @@
 import { ref, watch, computed } from 'vue';
 import { useQuery, useQueryClient } from '@tanstack/vue-query';
-import apiClient from '@/api/axios';
+import apiClient from '@/api/pokeAxios';
 import type { Pokemon, PokemonDetail, PokemonListResponse } from '@/models/Pokemon';
 
 const fetchPokemons = async (): Promise<PokemonListResponse> => {

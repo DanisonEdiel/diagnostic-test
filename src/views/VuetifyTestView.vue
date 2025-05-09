@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, computed } from 'vue';
 import { usePokemon } from '@/composables/pokemon/usePokemon';
-import apiClient from '@/api/axios';
+import apiClient from '@/api/pokeAxios';
 import type { Pokemon, PokemonListResponse } from '@/models/Pokemon';
 
 const {
@@ -54,18 +54,18 @@ const performSearch = async (query: string) => {
     await getPokemons();
     return;
   }
-  
+
   isSearching.value = true;
   searchLoading.value = true;
   searchError.value = null;
-  
+
   try {
     const response = await apiClient.get<PokemonListResponse>('/pokemon', {
       params: {
         limit: 100
       }
     });
-    searchResults.value = response.data.results.filter((pokemon: Pokemon) => 
+    searchResults.value = response.data.results.filter((pokemon: Pokemon) =>
       pokemon.name.toLowerCase().includes(query.toLowerCase())
     );
     searchLoading.value = false;
@@ -122,7 +122,7 @@ const formatPokemonName = (name: string | undefined): string => {
 const selectedPokemonDetails = computed(() => {
   const pokemonData = selectedPokemon.value;
   if (!pokemonData) return null;
-  
+
   return {
     id: pokemonData.id,
     name: pokemonData.name,
@@ -163,8 +163,8 @@ const isNextDisabled = computed<boolean>(() => {
           <v-card>
             <v-card-title>Search Pokemon 👀</v-card-title>
             <v-card-text>
-              <v-text-field v-model="searchQuery" label="Pokemon Name" prepend-inner-icon="mdi-magnify"
-                 clearable @input="handleSearch"></v-text-field>
+              <v-text-field v-model="searchQuery" label="Pokemon Name" prepend-inner-icon="mdi-magnify" clearable
+                @input="handleSearch"></v-text-field>
             </v-card-text>
           </v-card>
         </v-col>
@@ -215,11 +215,11 @@ const isNextDisabled = computed<boolean>(() => {
         <v-col v-if="selectedPokemonDetails" cols="3">
           <v-card class="h-100">
             <v-card-title class="text-h5">{{ formatPokemonName(selectedPokemonDetails.name) }}</v-card-title>
-            
+
             <v-img
               :src="selectedPokemonDetails.sprites?.other?.['official-artwork']?.front_default || selectedPokemonDetails.sprites?.front_default"
               height="200" contain class="mx-auto"></v-img>
-            
+
             <v-card-text>
               <v-list density="compact">
                 <v-list-item>
@@ -238,8 +238,8 @@ const isNextDisabled = computed<boolean>(() => {
               <div class="mt-2">
                 <strong>Types:</strong>
                 <div class="d-flex flex-wrap">
-                  <v-chip v-for="(type, index) in selectedPokemonDetails.types" :key="index" class="ma-1" color="primary"
-                    text-color="white" size="small">
+                  <v-chip v-for="(type, index) in selectedPokemonDetails.types" :key="index" class="ma-1"
+                    color="primary" text-color="white" size="small">
                     {{ formatPokemonName(type.type.name) }}
                   </v-chip>
                 </div>
@@ -269,7 +269,6 @@ const isNextDisabled = computed<boolean>(() => {
 </template>
 
 <style scoped>
-
 .pokemon-card {
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;

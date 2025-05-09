@@ -10,6 +10,11 @@ const MainRoutes = {
         name: 'Default',
         path: '/pokemon-list',
         component: () => import('@/views/VuetifyTestView.vue')
+      },
+      {
+        name: 'practice',
+        path: '/practice',
+        component: () => import('@/views/PracticeView.vue')
       }
     ]
   };
