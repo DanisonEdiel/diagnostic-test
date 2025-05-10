@@ -1,32 +1,21 @@
-FROM node:20-alpine as build-stage
-
-# Establecer directorio de trabajo
+# Etapa 1: Construcción
+FROM node:18-alpine AS build
 WORKDIR /app
-
-# Copiar archivos de dependencias
 COPY package*.json ./
-
-# Instalar dependencias
-RUN npm ci
-
-# Copiar el resto de archivos del proyecto
+RUN npm install
 COPY . .
-
-# Configurar variables de entorno para la compilación
 ARG VUE_APP_API_URL
-ENV VUE_APP_API_URL=${VUE_APP_API_URL}
-
-# Construir la aplicación para producción
+ENV VUE_APP_API_URL=$VUE_APP_API_URL
 RUN npm run build
 
-# Etapa de producción
-FROM nginx:stable-alpine as production-stage
+# Etapa 2: Servir el contenido con Nginx
+FROM nginx:alpine
 
 # Instalar gettext para envsubst (reemplazo de variables)
 RUN apk add --no-cache gettext
 
-# Copiar archivos de configuración de nginx
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# Copiar archivos de la aplicación y configuración
+COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.template
 
 # Exponer puerto 80
