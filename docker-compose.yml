@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VUE_APP_API_URL=${VUE_APP_API_URL:-http://localhost:8080/api}
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - BACKEND_API_URL=${BACKEND_API_URL:-http://localhost:8080/api/}
+    # Los valores por defecto se pueden sobrescribir con variables de entorno
+    # o con un archivo .env

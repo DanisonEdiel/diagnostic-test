@@ -12,18 +12,28 @@ RUN npm ci
 # Copiar el resto de archivos del proyecto
 COPY . .
 
+# Configurar variables de entorno para la compilación
+ARG VUE_APP_API_URL
+ENV VUE_APP_API_URL=${VUE_APP_API_URL}
+
 # Construir la aplicación para producción
 RUN npm run build
 
 # Etapa de producción
 FROM nginx:stable-alpine as production-stage
 
+# Instalar gettext para envsubst (reemplazo de variables)
+RUN apk add --no-cache gettext
+
 # Copiar archivos de configuración de nginx
 COPY --from=build-stage /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.template
 
-# Exponer puerto (Heroku asignará dinámicamente un puerto, pero lo configuraremos en el archivo de configuración de nginx)
-EXPOSE $PORT
+# Exponer puerto 80
+EXPOSE 80
 
-# Comando para iniciar nginx con la variable de entorno PORT
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+# Variables de entorno para la configuración de nginx
+ENV BACKEND_API_URL=http://localhost:8080/api/
+
+# Script de inicio para reemplazar variables y arrancar nginx
+CMD ["sh", "-c", "envsubst < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
