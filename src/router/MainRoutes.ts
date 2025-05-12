@@ -13,7 +13,7 @@ const MainRoutes = {
       },
       {
         name: 'practice',
-        path: '/practice',
+        path: '/',
         component: () => import('@/views/PracticeView.vue')
       }
     ]
