@@ -37,6 +37,52 @@ npm run preview
 npm run lint
 ```
 
+## 🚀 Despliegue en Vercel
+
+### Requisitos Previos
+
+- Una cuenta en [Vercel](https://vercel.com)
+- Git instalado en tu máquina local
+- El CLI de Vercel (opcional)
+
+### Pasos para el Despliegue
+
+1. **Instalar el CLI de Vercel (opcional)**
+
+```sh
+npm install -g vercel
+```
+
+2. **Configuración del proyecto para Vercel**
+
+El proyecto ya incluye un archivo `vercel.json` con la configuración necesaria para el despliegue.
+
+3. **Despliegue a través del CLI de Vercel**
+
+```sh
+# Navega a la carpeta del proyecto
+cd diagnostic-test
+
+# Ejecuta el comando de despliegue
+vercel
+```
+
+4. **Despliegue a través de la interfaz web de Vercel**
+
+- Sube tu repositorio a GitHub, GitLab o Bitbucket
+- Inicia sesión en [Vercel](https://vercel.com)
+- Haz clic en "New Project"
+- Importa tu repositorio
+- Configura las opciones de despliegue (Framework: Vite)
+- Haz clic en "Deploy"
+
+5. **Variables de entorno en Vercel**
+
+Si necesitas configurar variables de entorno adicionales:
+- Ve a tu proyecto en el dashboard de Vercel
+- Navega a 'Settings' > 'Environment Variables'
+- Añade las variables necesarias con el prefijo VITE_ para que sean accesibles en el frontend
+
 ## 🚀 Despliegue en AWS EC2
 
 ### Requisitos Previos
