@@ -22,7 +22,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.template
 EXPOSE 80
 
 # Variables de entorno para la configuración de nginx
-ENV BACKEND_API_URL=http://localhost:8080/api/
+ENV BACKEND_API_URL=http://orderlyheroku-67e3b0c6e00e.herokuapp.com/
 
 # Script de inicio para reemplazar variables y arrancar nginx
 CMD ["sh", "-c", "envsubst < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
